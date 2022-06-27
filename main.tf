@@ -26,3 +26,16 @@ resource "aws_subnet" "az1_subnet" {
     environment  = var.environment
   }
 }
+
+resource "aws_vpc_ipam" "main" {
+  description = "My IPAM"
+  operating_regions {
+    region_name = data.aws_region.current.name
+  }
+
+  tags = {
+    Owner        = var.owner
+    Project_name = var.project_name
+    Environment  = var.environment
+  }
+}
